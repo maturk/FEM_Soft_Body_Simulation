@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfemLib.a  CMakeFiles/femLib.dir/_.cpp.o
+/usr/bin/ranlib libfemLib.a
