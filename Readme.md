@@ -1,26 +1,19 @@
-First Name: Matias
-Last Name:  Turkulainen
+In this exercise for the course Computational Models of Motion at ETH, we implemented FEM solver for a soft rigid body. The rigid body is controlled by pins at both ends and a minimum energy and force optimizer is implemented to achieve equilibrium state. A total energy objective is defined and minimized using Newtons method (second order Hessian method) for equilibrium conditions.  
 
-Solution to Question 4: 
+# FEM, Soft Manipulation, and Control
 
-Please check exercise4IMG.pdf for proof of exercise 4.
+Please find the assignment write-up on the course webpage or at the following link:
+![Assignment Write-up](https://github.com/maturk/FEM_Soft_Body_Simulation/blob/master/CMM_SoftManipulation.pdf)
 
-![Exercise 4 proof](https://github.com/CMM-22/a4-maturk/blob/master/exercise4IMG.pdf)
+First demp illustrates the FEM solver at equilibrium for varying pin locations. Internal forces and energy within the mesh are minimized at equilibrium states. 
 
-Solution to Question 10:
+![FEM demo](https://user-images.githubusercontent.com/30566358/173822368-aaa0f918-eab2-4e27-ad4b-0f428836eb8c.gif)
 
-Looking at the source code, optimization is done with GradientDescentLineSearch. If the optimization loss / cost function is non-convex, multiple solutions can exist if there are multiple local minima. The optimizer finds the first solution using gradient descent, and since the loss is at a local minimum here, it gets "stuck" and no longer updates the pose/controller.
+The second demo illustrates how control of the soft body works. When the pin locations are moved, the soft body assumes minimum energy configuration. 
 
-Solution to Question 11:
-
-A simple regularizer (often used in machine learning tasks) is the ridge regularizer along with the original L2 loss function (O). Since we desire the rotational components of the end pins to be vertical (i.e. at 90 degrees), I implement the ridge regularizer on the theta Left and theta Right components of U vector. I penalize angles that are not equal to 90 degrees with the following ridge regularizer:
-
-regularizer = lambda *((u(theta_L)-90)^2 + (u(theta_R)-90)^2)
+![Manipulator demo](https://user-images.githubusercontent.com/30566358/173823410-cdefbc59-55db-433d-8d75-7853459a5136.gif)
 
 See code for implementation... 
-
-
-Please find the assignment write-up on the course webpage.
 
 ---
 
